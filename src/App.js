@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Reemplazar Switch con Routes
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import ZapatoList from './CRUD/ZapatosList';
+import ZapatosEdit from './CRUD/ZapatosEdit';
+import ZapatosForm from './CRUD/ZapatosForm';
+import Home from './Cliente/HomeList';
+import ZapatosLayaut from './CRUD/ZapatosLayaut';
+import Login from './Acceso/Login';
+import Header from './Cliente/Header';
+
+const App = () => {
+  return ( 
+    <Router>
+      <Routes>
+        <Route path="/" element={<Header />}/>
+        <Route path="/admin" element={<ZapatoList />} />
+        <Route path="/admin/zapatos/form" element={<ZapatosForm />} />
+        <Route path="/admin/zapatos/edit/:id" element={<ZapatosEdit />} />
+        <Route path="/user" element={<ZapatosLayaut />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
